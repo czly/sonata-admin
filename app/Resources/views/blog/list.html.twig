@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-sm-3 col-xs-1"></div>
+    <div class="col-sm-6 col-xs-10">
+
+        <br />
+        {% for article in pagination %}
+        <div style="background-color: whitesmoke; padding-left: 30px;padding-right: 30px;padding-top: 10px;">
+            <div class="row">
+                <div class="col-sm-2 col-xs-2"></div>
+                <div class="col-sm-8 col-xs-12">
+                    <div class="row">
+                        <h3>{{ article.title }}</h3>
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <br />
+        </div>
+        <br />
+        {% endfor %}
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+    </div>
+    <div class="col-sm-3 col-xs-1"></div>
+</div>
+
+{% endblock body %}

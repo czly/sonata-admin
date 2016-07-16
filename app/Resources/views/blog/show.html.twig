@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}博客内容{% endblock title %}
+
+{% block body %}
+<div class="row jumbotron">
+    <div class="col-md-1 col-xs-1"></div>
+    <div class="col-md-10 col-xs-10"><h1>{{ title }}</h1></div>
+    <div class="col-md-1 col-xs-1"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-1 col-xs-1"></div>
+    <div class="col-md-10 col-xs-10"><h4>{{ content }}</h4></div>
+    <div class="col-md-1 col-xs-1"></div>
+</div>
+
+{% endblock body %}
