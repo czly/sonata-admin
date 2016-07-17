@@ -1,0 +1,7 @@
+// composer.json
+
+"require": {
+//...
+    "sonata-project/classification-bundle": "dev-master",
+//...
+}

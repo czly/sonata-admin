@@ -10,6 +10,7 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
 
+
         $bundles = array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
@@ -26,11 +27,26 @@ class AppKernel extends Kernel
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
+
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+
+            new Sonata\FormatterBundle\SonataFormatterBundle(),
+            new Sonata\MediaBundle\SonataMediaBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+
+
+            new Sonata\ClassificationBundle\SonataClassificationBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle,
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             
 
         );
-        $this->registerAdminBundles($bundles);
-        $this->registerApplicationBundles($bundles);
+
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
@@ -47,10 +63,7 @@ class AppKernel extends Kernel
      *
      * @param array $bundles
      */
-    protected function registerApplicationBundles(array &$bundles)
-    {
-        // add your bundle here
-    }
+
 
     /**
      * Register bundles used for prestaconcept administration
@@ -58,27 +71,12 @@ class AppKernel extends Kernel
      * @param array $bundles
      */
 
-    protected function registerAdminBundles(array &$bundles)
-    {
 
-        // Sonata
-        $bundles[] = new Sonata\CoreBundle\SonataCoreBundle();
-        $bundles[] = new Sonata\BlockBundle\SonataBlockBundle();
-        $bundles[] = new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle();
-        $bundles[] = new Sonata\AdminBundle\SonataAdminBundle();
-/*        $bundles[] = new CoopTilleuls\Bundle\CKEditorSonataMediaBundle\CoopTilleulsCKEditorSonataMediaBundle();
-        $bundles[] = new Sonata\FormatterBundle\SonataFormatterBundle();
-        $bundles[] = new Sonata\MediaBundle\SonataMediaBundle();
-        $bundles[] = new Sonata\IntlBundle\SonataIntlBundle();
-        $bundles[] = new Sonata\ClassificationBundle\SonataClassificationBundle();
-        $bundles[] = new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle();*/
-
-
-
-    }
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
+
+
 }

@@ -14,6 +14,9 @@ class BlogPostAdmin extends Admin
         $formMapper
             ->with('Content', array('class' => 'col-md-9'))
             ->add('title', 'text')
+            ->add('image', 'sonata_type_model', array(
+                'property' => 'name'
+            ))
             ->add('body', 'ckeditor', array('autoload' => true))
             ->add('create_time', 'sonata_type_date_picker', array(
                 'format'=>'yyyy-MM-dd HH:mm:ss',
@@ -38,6 +41,7 @@ class BlogPostAdmin extends Admin
             ->addIdentifier('title')
             ->add('subject.name')
             ->add('category.name')
+            ->add('image.name')
             ->add('createTime')
             ;
     }

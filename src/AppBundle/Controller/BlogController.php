@@ -13,9 +13,8 @@ class BlogController extends Controller
      */
     public function showAction(Request $request)
     {
-        $blogPostRepository = $this->getDoctrine()->getRepository('AppBundle:BlogPost');
-        $blogposts = $blogPostRepository->findAll();
-        return $this->render('blog/show.html.twig', array('title' => $blogposts[0]->getTitle(), 'content' => $blogposts[0]->getBody()));
+        $this->blogPostRepository = $this->getDoctrine()->getRepository('AppBundle:BlogPost');
+        return $this->render('blog/show.html.twig', array('blogpost' => $this->blogPostRepository->find($blogId)));
     }
 
     public function listAction(Request $request, $subjectId)

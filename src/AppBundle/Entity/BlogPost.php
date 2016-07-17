@@ -144,13 +144,13 @@ class BlogPost
         $this->createTime = $createTime;
     }
 
-    /**
+
+     /**
      * @var Media
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
      */
     private $image;
-    
     /**
      * @return Media
      */
@@ -165,5 +165,27 @@ class BlogPost
     public function setImage($image)
     {
         $this->image = $image;
+    }
+    /**
+     * body去标签然后截取前多少个字,在twig中使用方法:{{ article.abstract }}
+     * @return string
+     */
+    public function getAbstract()
+    {
+        $pos = strpos($this->body, '<div style="page-break-after');
+        if ($pos > 0) {
+            return strip_tags(substr($this->body, 0, $pos));
+        } else {
+            return strip_tags(mb_substr($this->body, 0, 100, "utf-8")) . '...';
+        }
+    }
+    /**
+     * 创建时间转成字符串才能展示
+     * @return string
+     */
+    public function getCreateTimeStr()
+    {
+        $newDate = $this->createTime->format('Y-m-d H:i');
+        return $newDate;
     }
 }

@@ -38,6 +38,9 @@ twig:
         resources:
             - 'SonataCoreBundle:Form:datepicker.html.twig'
 
+imports:
+    #...
+    - { resource: sonata_classification.yml }
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -51,16 +54,19 @@ doctrine:
         types:
             json: Sonata\Doctrine\Types\JsonType
 
-    # orm:
-    #     auto_generate_proxy_classes: "%kernel.debug%"
-    #     entity_managers:
-    #         default:
-    #             mappings:
-    #                 AppBundle:
-    #                     type:      ~
-    #                     dir:       "Entity"
-    #                     prefix:    "AppBundle\Entity"
-    #                     is_bundle: ~
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        entity_managers:
+            default:
+                naming_strategy: doctrine.orm.naming_strategy.underscore
+                mappings:
+                    ApplicationSonataMediaBundle: ~
+                    SonataMediaBundle: ~
+                    AppBundle:
+                        type:      ~
+                        dir:       "Entity"
+                        prefix:    "AppBundle\Entity"
+                        is_bundle: ~
         
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
@@ -69,10 +75,10 @@ doctrine:
         #   3. Uncomment next line:
         #     path:     "%database_path%"
 
-    orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+    # orm:
+    #     auto_generate_proxy_classes: "%kernel.debug%"
+    #     naming_strategy: doctrine.orm.naming_strategy.underscore
+    #     auto_mapping: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -93,9 +99,8 @@ sonata_block:
         sonata.user.block.menu:    # used to display the menu in profile pages
         sonata.user.block.account: # used to display menu option (login option)
         
-sonata_admin:
-    templates:
-        layout: SonataAdminBundle::my_layout.html.twig
+
+
 knp_paginator:
     page_range: 5                      # default page range used in pagination control
     default_options:
@@ -107,4 +112,82 @@ knp_paginator:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig     # sliding pagination controls template
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
 
+sonata_formatter:
+    formatters:
+        markdown:
+            service: sonata.formatter.text.markdown
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+                - sonata.media.formatter.twig
 
+        text:
+            service: sonata.formatter.text.text
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+                - sonata.media.formatter.twig
+
+        rawhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+                - sonata.media.formatter.twig
+
+        richhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+                - sonata.media.formatter.twig
+
+        twig:
+            service: sonata.formatter.text.twigengine
+            extensions: [] # Twig formatter cannot have extensions
+    ckeditor:
+        templates:
+            browser: 'SonataFormatterBundle:Ckeditor:browser.html.twig'
+            upload: 'SonataFormatterBundle:Ckeditor:upload.html.twig'
+
+sonata_media:
+    default_context: default
+    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+    cdn:
+        server:
+            path: /uploads/media # http://media.sonata-project.org/
+
+    filesystem:
+        local:
+            directory:  %kernel.root_dir%/../web/uploads/media
+            create:     false
+
+ivory_ck_editor:
+    default_config: default
+    configs:
+        default:
+            filebrowserBrowseRoute: admin_sonata_media_media_ckeditor_browser
+            filebrowserImageBrowseRoute: admin_sonata_media_media_ckeditor_browser
+                # Display images by default when clicking the image dialog browse button
+            filebrowserImageBrowseRouteParameters:
+                provider: sonata.media.provider.image
+            filebrowserUploadRoute: admin_sonata_media_media_ckeditor_upload
+            filebrowserUploadRouteParameters:
+                provider: sonata.media.provider.file
+                    # Upload file as image when sending a file from the image dialog
+            filebrowserImageUploadRoute: admin_sonata_media_media_ckeditor_upload
+            filebrowserImageUploadRouteParameters:
+                provider: sonata.media.provider.image
+                context: my-context # Optional, to upload in a custom context

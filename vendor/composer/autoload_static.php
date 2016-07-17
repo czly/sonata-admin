@@ -41,6 +41,7 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
+            'Sonata\\UserBundle\\' => 18,
             'Sonata\\NotificationBundle\\' => 26,
             'Sonata\\MediaBundle\\' => 19,
             'Sonata\\IntlBundle\\' => 18,
@@ -60,6 +61,10 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
             'Sensio\\Bundle\\DistributionBundle\\' => 33,
         ),
+        'N' => 
+        array (
+            'Negotiation\\' => 12,
+        ),
         'M' => 
         array (
             'Monolog\\' => 8,
@@ -76,6 +81,11 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
             'Ivory\\JsonBuilder\\' => 18,
             'Ivory\\CKEditorBundle\\' => 21,
             'Incenteev\\ParameterHandler\\' => 27,
+        ),
+        'G' => 
+        array (
+            'Google\\Authenticator\\Tests\\' => 27,
+            'Google\\Authenticator\\' => 21,
         ),
         'E' => 
         array (
@@ -164,6 +174,10 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
         array (
             0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Bridge/Doctrine',
         ),
+        'Sonata\\UserBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/user-bundle',
+        ),
         'Sonata\\NotificationBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sonata-project/notification-bundle',
@@ -236,6 +250,10 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
         array (
             0 => __DIR__ . '/..' . '/sensio/distribution-bundle',
         ),
+        'Negotiation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -267,6 +285,14 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
         'Incenteev\\ParameterHandler\\' => 
         array (
             0 => __DIR__ . '/..' . '/incenteev/composer-parameter-handler',
+        ),
+        'Google\\Authenticator\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/google-authenticator/tests',
+        ),
+        'Google\\Authenticator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/google-authenticator/lib',
         ),
         'Exporter\\' => 
         array (
@@ -347,6 +373,13 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
                 0 => __DIR__ . '/..' . '/phpcollection/phpcollection/src',
             ),
         ),
+        'N' => 
+        array (
+            'Nelmio\\ApiDocBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/nelmio/api-doc-bundle',
+            ),
+        ),
         'M' => 
         array (
             'Michelf' => 
@@ -367,6 +400,10 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
         ),
         'J' => 
         array (
+            'JsonpCallbackValidator' => 
+            array (
+                0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
+            ),
             'JMS\\SerializerBundle' => 
             array (
                 0 => __DIR__ . '/..' . '/jms/serializer-bundle',
@@ -392,6 +429,17 @@ class ComposerStaticInit447e0408cbcbbdf0d6df9a85eb1d2ead
             'Gaufrette' => 
             array (
                 0 => __DIR__ . '/..' . '/knplabs/gaufrette/src',
+            ),
+        ),
+        'F' => 
+        array (
+            'FOS\\UserBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/friendsofsymfony/user-bundle',
+            ),
+            'FOS\\RestBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/friendsofsymfony/rest-bundle',
             ),
         ),
         'D' => 
